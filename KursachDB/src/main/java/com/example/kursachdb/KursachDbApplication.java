@@ -9,6 +9,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class KursachDbApplication implements WebMvcConfigurer {
 
 	public static void main(String[] args) {
+
 		SpringApplication.run(KursachDbApplication.class, args);
 	}
 
