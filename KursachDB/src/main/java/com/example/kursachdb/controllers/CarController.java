@@ -21,10 +21,10 @@ public class CarController {
     private final CarRepo carRepo;
 
     @GetMapping
-    public String cars(@RequestParam(required=false,name="makeTypeSelect") String makeTypeSelect,
-                       @RequestParam(required=false,name="bodyTypeSelect") String bodyTypeSelect,
-                       @RequestParam(required=false,name="numSeatsTypeSelect") String numSeatsTypeSelect,
-                       @RequestParam(required=false,name="gearBoxTypeSelect") String gearBoxTypeSelect,
+    public String cars(@RequestParam(required=false,name="makeTypeSelect") Integer makeTypeSelect,
+                       @RequestParam(required=false,name="bodyTypeSelect") Integer bodyTypeSelect,
+                       @RequestParam(required=false,name="numSeatsTypeSelect") Integer numSeatsTypeSelect,
+                       @RequestParam(required=false,name="gearBoxTypeSelect") Integer gearBoxTypeSelect,
                      /*@RequestParam Double price,*/
                        Model model) {
         carService.findCar(model, makeTypeSelect, bodyTypeSelect, numSeatsTypeSelect, gearBoxTypeSelect);

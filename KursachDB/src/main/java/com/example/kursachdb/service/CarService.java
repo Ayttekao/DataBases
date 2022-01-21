@@ -3,12 +3,12 @@ package com.example.kursachdb.service;
 import com.example.kursachdb.domain.*;
 import com.example.kursachdb.repos.*;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
-import java.util.HashSet;
 import java.util.Objects;
-import java.util.Set;
 
 @Service
 @RequiredArgsConstructor
@@ -31,42 +31,27 @@ public class CarService implements ICarService{
 
     public void findCar(
             Model model,
-            String makeTypeSelect,
-            String bodyTypeSelect,
-            String numSeatsTypeSelect,
-            String gearBoxTypeSelect
+            Integer makeTypeSelect,
+            Integer bodyTypeSelect,
+            Integer numSeatsTypeSelect,
+            Integer gearBoxTypeSelect
     ) {
-        Iterable<Car> cars = carRepo.findAll();
+        Iterable<Car> cars;
 
-        Iterable<Brand> makes = brandRepo.findAll();
-        Iterable<BodyType> bodyTypes = bodyTypeRepo.findAll();
-        Iterable<Layout> layouts = layoutRepo.findAll();
-        Iterable<GearBox> gearBoxes = gearBoxRepo.findAll();
-        Iterable<Capacity> capacities = capacityRepo.findAll();
-        model.addAttribute("makes", makes);
-        model.addAttribute("bodyTypes", bodyTypes);
-        model.addAttribute("layouts", layouts);
-        model.addAttribute("gearBoxes", gearBoxes);
-        model.addAttribute("capacities", capacities);
+        if (makeTypeSelect == null && bodyTypeSelect == null && numSeatsTypeSelect == null && gearBoxTypeSelect == null)
+        {
+            cars = carRepo.findAll();
+        }
+        else
+        {
+             cars = carRepo.findCarsByBrandIdAndBodyTypeIdAndCapacityIdAndGearBoxId(makeTypeSelect, bodyTypeSelect, numSeatsTypeSelect, gearBoxTypeSelect);
+        }
 
-        if (!Objects.equals(makeTypeSelect, "All"))
-        {
-            cars = carRepo.findByBrand(makeTypeSelect);
-        }
-        if (!Objects.equals(bodyTypeSelect, "All"))
-        {
-            cars = carRepo.findByBodyType(bodyTypeSelect);
-        }
-        if (!Objects.equals(numSeatsTypeSelect, "All"))
-        {
-            try {
-                cars = carRepo.findByCapacity(Short.parseShort(numSeatsTypeSelect));
-            } catch (NumberFormatException ignored) {}
-        }
-        if (!Objects.equals(gearBoxTypeSelect, "All"))
-        {
-            cars = carRepo.findByGearBox(gearBoxTypeSelect);
-        }
+        model.addAttribute("makes", brandRepo.findAll());
+        model.addAttribute("bodyTypes", bodyTypeRepo.findAll());
+        model.addAttribute("layouts", layoutRepo.findAll());
+        model.addAttribute("gearBoxes", gearBoxRepo.findAll());
+        model.addAttribute("capacities", capacityRepo.findAll());
 
         model.addAttribute("cars", cars);
     }

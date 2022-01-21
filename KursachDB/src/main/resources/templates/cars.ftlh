@@ -74,10 +74,10 @@
                                 <label>Body Type:</label>
 
                                 <select name="bodyTypeSelect">
-                                    <option value="All">All</option>
+                                    <option value="">All</option>
                                     <#if bodyTypes?has_content>
                                         <#list bodyTypes as bodyType>
-                                            <option value="${bodyType.name}">${bodyType.name}</option>
+                                            <option value="${bodyType.id}">${bodyType.name}</option>
                                         </#list>
                                     <#else>
                                         No body types
@@ -91,10 +91,10 @@
                                 <label>Make:</label>
 
                                  <select name="makeTypeSelect">
-                                     <option value="All">All</option>
+                                     <option value="">All</option>
                                      <#if makes?has_content>
                                          <#list makes as make>
-                                             <option value="${make.name}">${make.name}</option>
+                                             <option value="${make.id}">${make.name}</option>
                                          </#list>
                                      <#else>
                                          No make
@@ -122,10 +122,10 @@
                                 <label>Gearbox:</label>
 
                                 <select name="gearBoxTypeSelect">
-                                    <option value="All">All</option>
+                                    <option value="">All</option>
                                     <#if gearBoxes?has_content>
                                         <#list gearBoxes as gearBox>
-                                            <option value="${gearBox.switchingType}">${gearBox.switchingType}</option>
+                                            <option value="${gearBox.id}">${gearBox.switchingType}</option>
                                         </#list>
                                     <#else>
                                         No make
@@ -139,10 +139,10 @@
                                 <label>Number of seats:</label>
 
                                 <select name="numSeatsTypeSelect">
-                                    <option value="All">All</option>
+                                    <option value="">All</option>
                                     <#if capacities?has_content>
                                         <#list capacities as capacity>
-                                            <option value="${capacity.numberOfSeats}">${capacity.numberOfSeats}</option>
+                                            <option value="${capacity.id}">${capacity.numberOfSeats}</option>
                                         </#list>
                                     <#else>
                                         No make
