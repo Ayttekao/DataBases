@@ -13,7 +13,7 @@
                         <li><a href="/index">Home</a></li>
                         <li><a href="/cars">Cars</a></li>
                         <#if isAdmin>
-                            <li><a href="/add">Add cars</a></li>
+                            <li><a href="/cars/add">Add cars</a></li>
                             <li><a href="/user">User List</a></li>
                         </#if>
                         <#if known>

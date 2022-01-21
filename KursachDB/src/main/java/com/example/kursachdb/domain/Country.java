@@ -9,7 +9,7 @@ import javax.persistence.Id;
 public class Country {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer country_id;
+    private Integer id;
 
     public Country(String name) {
         this.name = name;
@@ -21,12 +21,12 @@ public class Country {
 
     }
 
-    public Integer getCountry_id() {
-        return country_id;
+    public Integer getId() {
+        return id;
     }
 
-    public void setCountry_id(Integer country_id) {
-        this.country_id = country_id;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getName() {

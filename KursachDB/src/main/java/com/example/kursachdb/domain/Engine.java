@@ -9,14 +9,14 @@ import javax.persistence.Id;
 public class Engine {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer engine_id;
+    private Integer id;
 
-    private String engine_name;
+    private String name;
 
-    private Double capacity;
+    private Double volume;
 
-    public Engine(String engine_name) {
-        this.engine_name = engine_name;
+    public Engine(String name) {
+        this.name = name;
     }
 
     private Short horse_power;
@@ -25,28 +25,28 @@ public class Engine {
 
     }
 
-    public Integer getEngine_id() {
-        return engine_id;
+    public Integer getId() {
+        return id;
     }
 
-    public void setEngine_id(Integer engine_id) {
-        this.engine_id = engine_id;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public String getEngine_name() {
-        return engine_name;
+    public String getName() {
+        return name;
     }
 
-    public void setEngine_name(String engine_name) {
-        this.engine_name = engine_name;
+    public void setName(String engine_name) {
+        this.name = engine_name;
     }
 
-    public Double getCapacity() {
-        return capacity;
+    public Double getVolume() {
+        return volume;
     }
 
-    public void setCapacity(Double capacity) {
-        this.capacity = capacity;
+    public void setVolume(Double capacity) {
+        this.volume = capacity;
     }
 
     public Short getHorse_power() {

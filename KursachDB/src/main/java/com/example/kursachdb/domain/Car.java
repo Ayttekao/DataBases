@@ -3,11 +3,25 @@ package com.example.kursachdb.domain;
 import javax.persistence.*;
 import lombok.Data;
 
+import java.util.Objects;
+
 @Entity
 @Table(name = "car", schema = "public")
 @Data
 public class Car {
     public Car(){}
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Car car)) return false;
+        return Objects.equals(getCar_id(), car.getCar_id()) && Objects.equals(getBrand(), car.getBrand()) && Objects.equals(getModel(), car.getModel()) && Objects.equals(getBodyType(), car.getBodyType()) && Objects.equals(getLayout(), car.getLayout()) && Objects.equals(getCapacity(), car.getCapacity()) && Objects.equals(getEngine(), car.getEngine()) && Objects.equals(getGearBox(), car.getGearBox()) && Objects.equals(getCountry(), car.getCountry()) && Objects.equals(getPicture(), car.getPicture()) && Objects.equals(getPrice(), car.getPrice());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getCar_id(), getBrand(), getModel(), getBodyType(), getLayout(), getCapacity(), getEngine(), getGearBox(), getCountry(), getPicture(), getPrice());
+    }
 
     public Car(Brand brand, String model, BodyType bodyType,
                Layout layout, Capacity capacity, Engine engine,

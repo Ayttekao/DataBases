@@ -9,31 +9,31 @@ import javax.persistence.Id;
 public class Brand {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer brand_id;
+    private Integer id;
 
-    public Brand(String name_brand) {
-        this.name_brand = name_brand;
+    public Brand(String name) {
+        this.name = name;
     }
 
-    private String name_brand;
+    private String name;
 
     public Brand() {
 
     }
 
-    public Integer getBrand_id() {
-        return brand_id;
+    public Integer getId() {
+        return id;
     }
 
-    public void setBrand_id(Integer brand_id) {
-        this.brand_id = brand_id;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public String getName_brand() {
-        return name_brand;
+    public String getName() {
+        return name;
     }
 
-    public void setName_brand(String name_brand) {
-        this.name_brand = name_brand;
+    public void setName(String name) {
+        this.name = name;
     }
 }

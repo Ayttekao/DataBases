@@ -9,29 +9,29 @@ import javax.persistence.Id;
 public class BodyType {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer body_type_id;
+    private Integer id;
 
-    public BodyType(String name_body_type) {
-        this.name_body_type = name_body_type;
+    private String name;
+
+    public BodyType(String name) {
+        this.name = name;
     }
-
-    private String name_body_type;
 
     public BodyType() {}
 
-    public String getName_body_type() {
-        return name_body_type;
+    public String getName() {
+        return name;
     }
 
-    public void setName_body_type(String name_body_type) {
-        this.name_body_type = name_body_type;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public Integer getBody_type_id() {
-        return body_type_id;
+    public Integer getId() {
+        return id;
     }
 
-    public void setBody_type_id(Integer body_type_id) {
-        this.body_type_id = body_type_id;
+    public void setId(Integer id) {
+        this.id = id;
     }
 }

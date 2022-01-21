@@ -9,41 +9,40 @@ import javax.persistence.Id;
 public class GearBox {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer gear_box_id;
+    private Integer id;
 
-    private Short number_of_gears;
+    private Short numberOfGears;
 
-    public GearBox(String switching_type) {
-        this.switching_type = switching_type;
-    }
-
-    private String switching_type;
+    private String switchingType;
 
     public GearBox() {
-
     }
 
-    public Integer getGear_box_id() {
-        return gear_box_id;
+    public GearBox(String switchingType) {
+        this.switchingType = switchingType;
     }
 
-    public void setGear_box_id(Integer gear_box_id) {
-        this.gear_box_id = gear_box_id;
+    public Integer getId() {
+        return id;
     }
 
-    public Short getNumber_of_gears() {
-        return number_of_gears;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public void setNumber_of_gears(Short number_of_gears) {
-        this.number_of_gears = number_of_gears;
+    public Short getNumberOfGears() {
+        return numberOfGears;
     }
 
-    public String getSwitching_type() {
-        return switching_type;
+    public void setNumberOfGears(Short numberOfGears) {
+        this.numberOfGears = numberOfGears;
     }
 
-    public void setSwitching_type(String switching_type) {
-        this.switching_type = switching_type;
+    public String getSwitchingType() {
+        return switchingType;
+    }
+
+    public void setSwitchingType(String switchingType) {
+        this.switchingType = switchingType;
     }
 }

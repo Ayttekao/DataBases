@@ -77,7 +77,7 @@
                                     <option value="All">All</option>
                                     <#if bodyTypes?has_content>
                                         <#list bodyTypes as bodyType>
-                                            <option value="${bodyType.name_body_type}">${bodyType.name_body_type}</option>
+                                            <option value="${bodyType.name}">${bodyType.name}</option>
                                         </#list>
                                     <#else>
                                         No body types
@@ -94,7 +94,7 @@
                                      <option value="All">All</option>
                                      <#if makes?has_content>
                                          <#list makes as make>
-                                             <option value="${make.name_brand}">${make.name_brand}</option>
+                                             <option value="${make.name}">${make.name}</option>
                                          </#list>
                                      <#else>
                                          No make
@@ -125,7 +125,7 @@
                                     <option value="All">All</option>
                                     <#if gearBoxes?has_content>
                                         <#list gearBoxes as gearBox>
-                                            <option value="${gearBox.switching_type}">${gearBox.switching_type}</option>
+                                            <option value="${gearBox.switchingType}">${gearBox.switchingType}</option>
                                         </#list>
                                     <#else>
                                         No make
@@ -142,7 +142,7 @@
                                     <option value="All">All</option>
                                     <#if capacities?has_content>
                                         <#list capacities as capacity>
-                                            <option value="${capacity.number_of_seats}">${capacity.number_of_seats}</option>
+                                            <option value="${capacity.numberOfSeats}">${capacity.numberOfSeats}</option>
                                         </#list>
                                     <#else>
                                         No make
@@ -181,17 +181,18 @@
                                 <sup>$</sup>${car.price}
                             </span>
 
-                                    <h4>${car.brand.name_brand} ${car.model}</h4>
+                                    <h4>${car.brand.name} ${car.model}</h4>
 
                                     <p>
-                                        <i class="fa fa-dashboard"></i> ${car.engine.engine_name} &nbsp;&nbsp;&nbsp;
-                                        <i class="fa fa-cog"></i> ${car.gearBox.switching_type} &nbsp;&nbsp;&nbsp;
+                                        <i class="fa fa-dashboard"></i> ${car.engine.name} &nbsp;&nbsp;&nbsp;
+                                        <i class="fa fa-cog"></i> ${car.gearBox.switchingType} &nbsp;&nbsp;&nbsp;
                                         <i class="fa fa-flag"></i> ${car.country.name} &nbsp;&nbsp;&nbsp;
-                                        <i class="fa fa-car"></i> ${car.bodyType.name_body_type} &nbsp;&nbsp;&nbsp;
+                                        <i class="fa fa-car"></i> ${car.bodyType.name} &nbsp;&nbsp;&nbsp;
                                     </p>
 
                                     <ul class="social-icons">
-                                        <li><a href="car-details">+ View Car</a></li>
+
+                                        <li><a href="/cars/${car.car_id}">+ View Car</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -209,175 +210,7 @@
                 </#if>
             </div>
 
-            <#--<div class="row">
-                <div class="col-lg-4">
-                    <div class="trainer-item">
-                        <div class="image-thumb">
-                            <img src="../static/images/product-1-720x480.jpg" alt="">
-                        </div>
-                        <div class="down-content">
-                            <span>
-                                <del><sup>$</sup>11999 </del> &nbsp; <sup>$</sup>11779
-                            </span>
-
-                            <h4>Lorem ipsum dolor sit amet, consectetur</h4>
-
-                            <p>
-                                <i class="fa fa-dashboard"></i> 130 000km &nbsp;&nbsp;&nbsp;
-                                <i class="fa fa-cube"></i> 1800 cc &nbsp;&nbsp;&nbsp;
-                                <i class="fa fa-cog"></i> Manual &nbsp;&nbsp;&nbsp;
-                            </p>
-
-                            <ul class="social-icons">
-                                <li><a href="car-details">+ View Car</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="trainer-item">
-                        <div class="image-thumb">
-                            <img src="../static/images/product-2-720x480.jpg" alt="">
-                        </div>
-                        <div class="down-content">
-                            <span>
-                                <del><sup>$</sup>11999 </del> &nbsp; <sup>$</sup>11779
-                            </span>
-
-                            <h4>Lorem ipsum dolor sit amet, consectetur</h4>
-
-                            <p>
-                                <i class="fa fa-dashboard"></i> 130 000km &nbsp;&nbsp;&nbsp;
-                                <i class="fa fa-cube"></i> 1800 cc &nbsp;&nbsp;&nbsp;
-                                <i class="fa fa-cog"></i> Manual &nbsp;&nbsp;&nbsp;
-                            </p>
-
-                            <ul class="social-icons">
-                                <li><a href="car-details">+ View Car</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="trainer-item">
-                        <div class="image-thumb">
-                            <img src="../static/images/product-3-720x480.jpg" alt="">
-                        </div>
-                        <div class="down-content">
-                            <span>
-                                <del><sup>$</sup>11999 </del> &nbsp; <sup>$</sup>11779
-                            </span>
-
-                            <h4>Lorem ipsum dolor sit amet, consectetur</h4>
-
-                            <p>
-                                <i class="fa fa-dashboard"></i> 130 000km &nbsp;&nbsp;&nbsp;
-                                <i class="fa fa-cube"></i> 1800 cc &nbsp;&nbsp;&nbsp;
-                                <i class="fa fa-cog"></i> Manual &nbsp;&nbsp;&nbsp;
-                            </p>
-
-                            <ul class="social-icons">
-                                <li><a href="car-details">+ View Car</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4">
-                    <div class="trainer-item">
-                        <div class="image-thumb">
-                            <img src="../static/images/product-4-720x480.jpg" alt="">
-                        </div>
-                        <div class="down-content">
-                            <span>
-                                <del><sup>$</sup>11999 </del> &nbsp; <sup>$</sup>11779
-                            </span>
-
-                            <h4>Lorem ipsum dolor sit amet, consectetur</h4>
-
-                            <p>
-                                <i class="fa fa-dashboard"></i> 130 000km &nbsp;&nbsp;&nbsp;
-                                <i class="fa fa-cube"></i> 1800 cc &nbsp;&nbsp;&nbsp;
-                                <i class="fa fa-cog"></i> Manual &nbsp;&nbsp;&nbsp;
-                            </p>
-
-                            <ul class="social-icons">
-                                <li><a href="car-details">+ View Car</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="trainer-item">
-                        <div class="image-thumb">
-                            <img src="../static/images/product-5-720x480.jpg" alt="">
-                        </div>
-                        <div class="down-content">
-                            <span>
-                                <del><sup>$</sup>11999 </del> &nbsp; <sup>$</sup>11779
-                            </span>
-
-                            <h4>Lorem ipsum dolor sit amet, consectetur</h4>
-
-                            <p>
-                                <i class="fa fa-dashboard"></i> 130 000km &nbsp;&nbsp;&nbsp;
-                                <i class="fa fa-cube"></i> 1800 cc &nbsp;&nbsp;&nbsp;
-                                <i class="fa fa-cog"></i> Manual &nbsp;&nbsp;&nbsp;
-                            </p>
-
-                            <ul class="social-icons">
-                                <li><a href="car-details">+ View Car</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="trainer-item">
-                        <div class="image-thumb">
-                            <img src="../static/images/product-6-720x480.jpg" alt="">
-                        </div>
-                        <div class="down-content">
-                            <span>
-                                <del><sup>$</sup>11999 </del> &nbsp; <sup>$</sup>11779
-                            </span>
-
-                            <h4>Lorem ipsum dolor sit amet, consectetur</h4>
-
-                            <p>
-                                <i class="fa fa-dashboard"></i> 130 000km &nbsp;&nbsp;&nbsp;
-                                <i class="fa fa-cube"></i> 1800 cc &nbsp;&nbsp;&nbsp;
-                                <i class="fa fa-cog"></i> Manual &nbsp;&nbsp;&nbsp;
-                            </p>
-
-                            <ul class="social-icons">
-                                <li><a href="car-details">+ View Car</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>-->
-
             <br>
-                
-            <#--<nav>
-              <ul class="pagination pagination-lg justify-content-center">
-                <li class="page-item">
-                  <a class="page-link" href="#" aria-label="Previous">
-                    <span aria-hidden="true">&laquo;</span>
-                    <span class="sr-only">Previous</span>
-                  </a>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item">
-                  <a class="page-link" href="#" aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
-                    <span class="sr-only">Next</span>
-                  </a>
-                </li>
-              </ul>
-            </nav>-->
 
         </div>
     </section>
