@@ -48,8 +48,11 @@ public class UserService implements UserDetailsService
         customerRepo.save(customer);
     }
 
-    public boolean addUser(Customer customer)
-    {
+    public void deleteUser(Customer customer) {
+        customerRepo.delete(customer);
+    }
+
+    public boolean addUser(Customer customer) {
         Customer customerFromDb = customerRepo.findByUsername(customer.getUsername());
 
         if (customerFromDb != null) {

@@ -75,6 +75,14 @@
                             <td>${customer.username}</td>
                             <td><#list customer.roles as role>${role}<#sep>, </#list></td>
                             <td><a href="/user/${customer.customer_id}">edit</a></td>
+                            <td>
+                                <a>
+                                    <form action="/user/${customer.customer_id}/delete" method="post">
+                                        <button class="btn btn-primary" type="submit">Delete</button>
+                                        <input type="hidden" name="_csrf" value="${_csrf.token}" />
+                                    </form>
+                                </a>
+                             </td>
                         </tr>
                     </#list>
                     </tbody>

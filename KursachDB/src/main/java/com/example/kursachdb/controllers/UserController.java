@@ -1,5 +1,6 @@
 package com.example.kursachdb.controllers;
 
+import com.example.kursachdb.domain.Car;
 import com.example.kursachdb.domain.Customer;
 import com.example.kursachdb.domain.Role;
 import com.example.kursachdb.repos.CustomerRepo;
@@ -33,6 +34,13 @@ public class UserController {
         model.addAttribute("customer", customer);
 
         return "customerEdit";
+    }
+
+    @PostMapping("/{customer}/delete")
+    @PreAuthorize("hasAuthority('ADMIN')")
+    public String delete(@PathVariable Customer customer) {
+        userService.deleteUser(customer);
+        return "redirect:/user";
     }
 
     @PostMapping
