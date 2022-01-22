@@ -9,25 +9,25 @@ import javax.persistence.Id;
 public class Picture {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer picture_id;
+    private Integer id;
 
-    private String picture_name;
+    private String name;
 
     public Picture(){}
 
-    public Integer getPicture_id() {
-        return picture_id;
+    public Integer getId() {
+        return id;
     }
 
-    public void setPicture_id(Integer picture_id) {
-        this.picture_id = picture_id;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public String getPicture_name() {
-        return picture_name;
+    public String getName() {
+        return name;
     }
 
-    public void setPicture_name(String picture_name) {
-        this.picture_name = picture_name;
+    public void setName(String name) {
+        this.name = name;
     }
 }

@@ -3,12 +3,15 @@ package com.example.kursachdb.service;
 import com.example.kursachdb.domain.*;
 import com.example.kursachdb.repos.*;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Example;
-import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
+import org.springframework.web.multipart.MultipartFile;
 
-import java.util.Objects;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -28,6 +31,12 @@ public class CarService implements ICarService{
     private final GearBoxRepo gearBoxRepo;
 
     private final LayoutRepo layoutRepo;
+
+    private final PictureRepo pictureRepo;
+
+    public void deleteCar(Car car) {
+        carRepo.delete(car);
+    }
 
     public void findCar(
             Model model,
@@ -56,27 +65,48 @@ public class CarService implements ICarService{
         model.addAttribute("cars", cars);
     }
 
-
-    @Override
-    public void addCar(
-            Model model,
+    private void innerAddCar(
+            Car car,
             String brand,
             String carModel,
             String bodyType,
             String layout,
             Short capacity,
             String engine,
+            Short engineHP,
+            Double engineVolume,
             String gearBox,
-            String county,
-            Double price
-    ) {
+            Short numberOfGears,
+            String country,
+            Double price,
+            MultipartFile imageFile,
+            String description
+    ) throws IOException {
         Brand brandFromDB = brandRepo.findBrandByName(brand);
         BodyType bodyTypeFromDB = bodyTypeRepo.findByName_body_type(bodyType);
         Layout layoutFromDB = layoutRepo.findByType_of_drive(layout);
         Capacity capacityFromDB = capacityRepo.findByNumber_of_seats(capacity);
-        Engine engineFromDB = engineRepo.findEngineByName(engine);
-        GearBox gearBoxFromDB = gearBoxRepo.findBySwitchingType(gearBox);
-        Country countryFromDB = countryRepo.findByName(county);
+        Engine engineFromDB = engineRepo.findEngineByNameAndHorsePowerAndVolume(engine, engineHP, engineVolume);
+        GearBox gearBoxFromDB = gearBoxRepo.findBySwitchingTypeAndNumberOfGears(gearBox, numberOfGears);
+        Country countryFromDB = countryRepo.findByName(country);
+        Picture pictureFromDB = null;
+
+        if (!imageFile.isEmpty())
+        {
+            String resultFilename = UUID.randomUUID() + imageFile.getOriginalFilename();
+            pictureFromDB = pictureRepo.findPictureByName(resultFilename);
+
+            if (pictureFromDB == null)
+            {
+                String folder = "src/main/resources/static/images/";
+                byte[] bytes = imageFile.getBytes();
+                pictureFromDB = new Picture();
+                Path path = Paths.get(folder + resultFilename);
+                Files.write(path, bytes);
+                pictureFromDB.setName(resultFilename);
+                pictureRepo.save(pictureFromDB);
+            }
+        }
 
         if (brandFromDB == null)
         {
@@ -101,33 +131,114 @@ public class CarService implements ICarService{
         if (engineFromDB == null)
         {
             engineFromDB = new Engine(engine);
+            engineFromDB.setHorsePower(engineHP);
+            engineFromDB.setVolume(engineVolume);
             engineRepo.save(engineFromDB);
         }
         if (gearBoxFromDB == null)
         {
             gearBoxFromDB = new GearBox(gearBox);
+            gearBoxFromDB.setNumberOfGears(numberOfGears);
             gearBoxRepo.save(gearBoxFromDB);
         }
         if (countryFromDB == null)
         {
-            countryFromDB = new Country(county);
+            countryFromDB = new Country(country);
             countryRepo.save(countryFromDB);
         }
 
-        Car car = new Car();
+        car.setPicture(pictureFromDB);
         car.setBrand(brandFromDB);
-        car.setModel(carModel);
         car.setBodyType(bodyTypeFromDB);
         car.setLayout(layoutFromDB);
         car.setCapacity(capacityFromDB);
         car.setEngine(engineFromDB);
         car.setGearBox(gearBoxFromDB);
         car.setCountry(countryFromDB);
+        car.setModel(carModel);
         car.setPrice(price);
+        car.setDescription(description);
 
         carRepo.save(car);
+    }
 
-        Iterable<Car> cars = carRepo.findAll();
-        model.addAttribute("cars", cars);
+    @Override
+    public void addCar(
+            String brand,
+            String carModel,
+            String bodyType,
+            String layout,
+            Short capacity,
+            String engine,
+            Short engineHP,
+            Double engineVolume,
+            String gearBox,
+            Short numberOfGears,
+            String country,
+            Double price,
+            MultipartFile imageFile,
+            String description
+    ) throws IOException {
+        innerAddCar(
+                new Car(),
+                brand,
+                carModel,
+                bodyType,
+                layout,
+                capacity,
+                engine,
+                engineHP,
+                engineVolume,
+                gearBox,
+                numberOfGears,
+                country,
+                price,
+                imageFile,
+                description
+        );
+    }
+
+    @Override
+    public void saveImage(MultipartFile imageFile) throws IOException {
+        String folder = "src/main/resources/static/images/";
+        byte[] bytes = imageFile.getBytes();
+        Path path = Paths.get(folder + imageFile.getOriginalFilename());
+        Files.write(path, bytes);
+    }
+
+    public void editCar(
+            Car car,
+            String brand,
+            String carModel,
+            String bodyType,
+            String layout,
+            Short capacity,
+            String engine,
+            Short engineHP,
+            Double engineVolume,
+            String gearBox,
+            Short numberOfGears,
+            String country,
+            Double price,
+            MultipartFile imageFile,
+            String description
+    ) throws IOException {
+        innerAddCar(
+                car,
+                brand,
+                carModel,
+                bodyType,
+                layout,
+                capacity,
+                engine,
+                engineHP,
+                engineVolume,
+                gearBox,
+                numberOfGears,
+                country,
+                price,
+                imageFile,
+                description
+        );
     }
 }

@@ -11,11 +11,11 @@
 
     <title>PHPJabbers.com | Free Car Dealer Website Template</title>
 
-    <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../static/css/bootstrap.min.css">
 
-    <link rel="stylesheet" type="text/css" href="../static/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="../../static/css/font-awesome.css">
 
-    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="../../static/css/style.css">
 
 </head>
 
@@ -47,108 +47,99 @@
 <!-- ***** Add Area Starts ***** -->
 <section class="section" id="contact-us" style="margin-top: 0">
     <div class="container-fluid">
-        <div class="contact-form section-bg" style="background-image: url(../static/images/contact-1-720x480.jpg)">
+        <div class="contact-form section-bg" style="background-image: url(../../static/images/contact-1-720x480.jpg)">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-10 offset-lg-1">
                         <div class="cta-content">
                             <br>
                             <br>
-                            <h2><em>Add</em> cars panel</h2>
+                            <h2><em>Edit</em> car panel</h2>
                             <p>Ut consectetur, metus sit amet aliquet placerat, enim est ultricies ligula</p>
                         </div>
                     </div>
                 </div>
             </div>
-            <form id="contact" action="" method="post" enctype="multipart/form-data">
+            <form id="contact" method="post" enctype="multipart/form-data">
                 <div class="row">
                     <div class="col-md-3 col-sm-12">
                         <fieldset>
-                            <input type="text" name="brand" placeholder="Brand" required="">
+                            <input type="text" name="brand" value="${car.brand.name}" placeholder="Brand" required="">
                         </fieldset>
                     </div>
                     <div class="col-md-3 col-sm-12">
                         <fieldset>
-                            <input type="text" name="carModel" placeholder="Model" required="">
+                            <input type="text" name="carModel" value="${car.model}" placeholder="Model" required="">
                         </fieldset>
                     </div>
                     <div class="col-md-3 col-sm-12">
                         <fieldset>
-                            <input type="text" name="bodyType" placeholder="Body Type" required="">
+                            <input type="text" name="bodyType" value="${car.bodyType.name}" placeholder="Body Type" required="">
                         </fieldset>
                     </div>
                     <div class="col-md-3 col-sm-12">
                         <fieldset>
-                            <input type="text" name="layout" placeholder="Layout" required="">
+                            <input type="text" name="layout" value="${car.layout.type_of_drive}" placeholder="Layout" required="">
                         </fieldset>
                     </div>
                     <div class="col-md-3 col-sm-12">
                         <fieldset>
-                            <input type="number" name="capacity" placeholder="Capacity" required="" min="0" oninput="validity.valid||(value=value.replace(/\D+/g, ''))">
+                            <input type="number" name="capacity" placeholder="Capacity" value="${car.capacity.numberOfSeats}" required="" min="0" oninput="validity.valid||(value=value.replace(/\D+/g, ''))">
                         </fieldset>
                     </div>
                     <div class="col-md-3 col-sm-12">
                         <fieldset>
-                            <input type="text" name="engine" placeholder="Engine" required="">
+                            <input type="text" name="engine" placeholder="Engine" value="${car.engine.name}" required="">
                         </fieldset>
                     </div>
                     <div class="col-md-3 col-sm-12">
                         <fieldset>
-                            <input type="number" name="engineHP" placeholder="Horse Power" required="" min="0" oninput="validity.valid||(value=value.replace(/\D+/g, ''))">
+                            <input type="number" name="engineHP" placeholder="Horse Power" value="${car.engine.horsePower}" required="" min="0" oninput="validity.valid||(value=value.replace(/\D+/g, ''))">
                         </fieldset>
                     </div>
                     <div class="col-md-3 col-sm-12">
                         <fieldset>
-                            <input type="number" name="engineVolume" placeholder="Engine displacement" required="" min="0"  step="0.1" oninput="validity.valid||(value=value.replace(/\D+/g, ''))">
+                            <input type="number" name="engineVolume" placeholder="Engine displacement" value="${car.engine.volume}" required="" min="0"  step="0.1" oninput="validity.valid||(value=value.replace(/\D+/g, ''))">
                         </fieldset>
                     </div>
                     <div class="col-md-3 col-sm-12">
                         <fieldset>
-                            <input type="text" name="gearBox" placeholder="GearBox" required="">
+                            <input type="text" name="gearBox" placeholder="GearBox" value="${car.gearBox.switchingType}" required="">
                         </fieldset>
                     </div>
                     <div class="col-md-3 col-sm-12">
                         <fieldset>
-                            <input type="number" name="numberOfGears" placeholder="Number of gears" required="" min="0" oninput="validity.valid||(value=value.replace(/\D+/g, ''))">
+                            <input type="number" name="numberOfGears" placeholder="Number of gears" value="${car.gearBox.numberOfGears}" required="" min="0" oninput="validity.valid||(value=value.replace(/\D+/g, ''))">
                         </fieldset>
                     </div>
                     <div class="col-md-3 col-sm-12">
                         <fieldset>
-                            <input type="text" name="country" placeholder="Country" required="">
+                            <input type="text" name="country" placeholder="Country" value="${car.country.name}" required="">
                         </fieldset>
                     </div>
-                    <div class="col-md-3 col-sm-12">
+                    <#--<div class="col-md-3 col-sm-12">
                         <fieldset>
-                            <input type="number"  name="price" placeholder="Price" min="0" oninput="validity.valid||(value=value.replace(/\D+/g, ''))" required="">
+                            <input type="number"  name="price" placeholder="Price" value="${car.price}" required="" min="0" oninput="validity.valid||(value=value.replace(/\D+/g, ''))">
                         </fieldset>
-                    </div>
+                    </div>-->
                     <div class="col-md-3 col-sm-12">
                         <fieldset>
-                            <input type="file" name="imageFile" accept="image/png, image/jpeg, image/jpg"/>
+                            <input type="file" name="imageFile" value="${car.picture.name}" accept="image/png, image/jpeg, image/jpg"/>
                         </fieldset>
                     </div>
                     <div class="col-lg-12">
                         <fieldset>
-                            <textarea name="description" rows="6" placeholder="Description" required=""></textarea>
+                            <textarea name="description" rows="6" placeholder="Description" required="">${car.description}</textarea>
                         </fieldset>
                     </div>
                     <div class="col-md-2">
                         <fieldset>
-                            <button type="submit" id="form-submit" class="main-button">Add</button>
+                            <button type="submit" id="form-submit" class="main-button">Edit</button>
                         </fieldset>
                     </div>
                 </div>
                 <input type="hidden" name="_csrf" value="${_csrf.token}" />
             </form>
-            <#--<form method="post" enctype="multipart/form-data" action="/uploadImage">
-                <div class="col-md-3 col-sm-12">
-                    <fieldset>
-                        <input type="file" name="imageFile" accept="image/png, image/jpeg, image/jpg"/>
-                        <input type="submit" value="Upload"/>
-                        <input type="hidden" name="_csrf" value="${_csrf.token}" />
-                    </fieldset>
-                </div>
-            </form>-->
         </div>
     </div>
 
@@ -163,22 +154,22 @@
 <!-- ***** Footer End ***** -->
 
 <!-- jQuery -->
-<script src="../static/js/jquery-2.1.0.min.js"></script>
+<script src="../../static/js/jquery-2.1.0.min.js"></script>
 
 <!-- Bootstrap -->
-<script src="../static/js/popper.js"></script>
-<script src="../static/js/bootstrap.min.js"></script>
+<script src="../../static/js/popper.js"></script>
+<script src="../../static/js/bootstrap.min.js"></script>
 
 <!-- Plugins -->
-<script src="../static/js/scrollreveal.min.js"></script>
-<script src="../static/js/waypoints.min.js"></script>
-<script src="../static/js/jquery.counterup.min.js"></script>
-<script src="../static/js/imgfix.min.js"></script>
-<script src="../static/js/mixitup.js"></script>
-<script src="../static/js/accordions.js"></script>
+<script src="../../static/js/scrollreveal.min.js"></script>
+<script src="../../static/js/waypoints.min.js"></script>
+<script src="../../static/js/jquery.counterup.min.js"></script>
+<script src="../../static/js/imgfix.min.js"></script>
+<script src="../../static/js/mixitup.js"></script>
+<script src="../../static/js/accordions.js"></script>
 
 <!-- Global Init -->
-<script src="../static/js/custom.js"></script>
+<script src="../../static/js/custom.js"></script>
 
 </body>
 </html>

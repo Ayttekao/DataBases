@@ -1,17 +1,26 @@
 package com.example.kursachdb.service;
 
-import com.sun.istack.NotNull;
-import org.springframework.ui.Model;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
 
 public interface ICarService {
-    void addCar(@NotNull Model model,
-                String brand,
-                String car_model,
-                String body_type,
-                String layout,
-                Short capacity,
-                String engine,
-                String gear_box,
-                String county,
-                Double price);
+    void addCar(
+            String brand,
+            String carModel,
+            String bodyType,
+            String layout,
+            Short capacity,
+            String engine,
+            Short engineHP,
+            Double engineVolume,
+            String gearBox,
+            Short numberOfGears,
+            String country,
+            Double price,
+            MultipartFile imageFile,
+            String description
+    ) throws IOException;
+
+    void saveImage(MultipartFile imageFile) throws IOException;
 }

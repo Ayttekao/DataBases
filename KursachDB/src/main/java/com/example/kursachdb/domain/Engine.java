@@ -13,13 +13,13 @@ public class Engine {
 
     private String name;
 
+    private Short horsePower;
+
     private Double volume;
 
     public Engine(String name) {
         this.name = name;
     }
-
-    private Short horse_power;
 
     public Engine() {
 
@@ -37,8 +37,8 @@ public class Engine {
         return name;
     }
 
-    public void setName(String engine_name) {
-        this.name = engine_name;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Double getVolume() {
@@ -49,11 +49,11 @@ public class Engine {
         this.volume = capacity;
     }
 
-    public Short getHorse_power() {
-        return horse_power;
+    public Short getHorsePower() {
+        return horsePower;
     }
 
-    public void setHorse_power(Short horse_power) {
-        this.horse_power = horse_power;
+    public void setHorsePower(Short horsePower) {
+        this.horsePower = horsePower;
     }
 }

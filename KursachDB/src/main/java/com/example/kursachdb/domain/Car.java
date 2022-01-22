@@ -42,10 +42,14 @@ public class Car {
         if (this.picture == null)
         {
             this.picture = new Picture();
-            this.picture.setPicture_id(1);
+            this.picture.setId(1);
         }
-        if (this.picture.getPicture_id() == null) {
-            this.picture.setPicture_id(1);
+        if (this.picture.getId() == null) {
+            this.picture.setId(1);
+        }
+        if (this.description == null || this.description.length() < 1)
+        {
+            this.description = "Description was not added by the user";
         }
     }
 
@@ -91,4 +95,15 @@ public class Car {
 
     @Column(name = "price")
     private Double price;
+
+    @Column(name = "description")
+    private String description;
+
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
+    }
 }

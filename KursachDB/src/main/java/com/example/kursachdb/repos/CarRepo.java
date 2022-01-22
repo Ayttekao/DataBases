@@ -12,10 +12,10 @@ public interface CarRepo extends CrudRepository<Car, Integer> {
     List<Car> findByBrand(String brand_id);
 
     @Query("SELECT c FROM Car c WHERE " +
-            "(:brandId is null or c.brand.id = :brandId) and " +
-            "(:bodyTypeId is null or c.bodyType.id = :bodyTypeId) and " +
-            "(:capacityId is null or c.capacity.id = :capacityId) and " +
-            "(:gearBoxId is null or c.gearBox.id = :gearBoxId)")
+            "(:brandId IS NULL OR c.brand.id = :brandId) AND " +
+            "(:bodyTypeId IS NULL OR c.bodyType.id = :bodyTypeId) AND " +
+            "(:capacityId IS NULL OR c.capacity.id = :capacityId) AND " +
+            "(:gearBoxId IS NULL OR c.gearBox.id = :gearBoxId)")
     List<Car> findCarsByBrandIdAndBodyTypeIdAndCapacityIdAndGearBoxId(
             @Param("brandId") Integer brandId,
             @Param("bodyTypeId") Integer bodyTypeId,
