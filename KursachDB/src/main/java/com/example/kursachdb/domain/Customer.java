@@ -40,6 +40,10 @@ public class Customer implements UserDetails {
         return roles.contains(Role.ADMIN);
     }
 
+    public Integer getCustomer_id() {
+        return customer_id;
+    }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return getRoles();

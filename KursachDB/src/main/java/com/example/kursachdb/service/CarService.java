@@ -147,7 +147,21 @@ public class CarService implements ICarService{
             countryRepo.save(countryFromDB);
         }
 
-        car.setPicture(pictureFromDB);
+        if (pictureFromDB == null)
+        {
+            pictureFromDB = new Picture();
+            pictureFromDB.setId(1);
+        }
+
+        if (pictureFromDB.getId() == null) {
+            pictureFromDB.setId(1);
+        }
+
+        if (car.getPicture() == null || car.getPicture().getId() == null)
+        {
+            car.setPicture(pictureFromDB);
+        }
+
         car.setBrand(brandFromDB);
         car.setBodyType(bodyTypeFromDB);
         car.setLayout(layoutFromDB);

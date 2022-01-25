@@ -3,6 +3,7 @@
     <#assign
     user = Session.SPRING_SECURITY_CONTEXT.authentication.principal
     name = user.getUsername()
+    id = user.getCustomer_id()
     isAdmin = user.isAdmin()
     >
 <#else>

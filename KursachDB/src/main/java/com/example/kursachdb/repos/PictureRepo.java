@@ -5,4 +5,5 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface PictureRepo extends CrudRepository<Picture, Integer> {
     Picture findPictureByName(String name);
+
 }

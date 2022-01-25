@@ -17,7 +17,13 @@
                             <li><a href="/user">Users List</a></li>
                         </#if>
                         <#if known>
-                            <li><a href="">${name}</a></li>
+                            <#--<li><a href="">${name}</a></li>-->
+                            <li class="dropdown">
+                                <a class="dropdown-toggle active" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">${name}</a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="/user/profile/${id}">Personal area</a>
+                                </div>
+                            </li>
                         <#else>
                             <li class="dropdown">
                                 <a class="dropdown-toggle active" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Account</a>

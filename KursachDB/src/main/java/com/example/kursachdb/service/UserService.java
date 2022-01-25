@@ -52,6 +52,26 @@ public class UserService implements UserDetailsService
         customerRepo.delete(customer);
     }
 
+    public void changeEmail(String email, Customer customer) {
+        customer.setEmail(email);
+        if (customerRepo.findCustomerByEmail(email) == null)
+        {
+            customerRepo.save(customer);
+        }
+    }
+
+    public void changeUsername(String username, Customer customer) {
+        customer.setUsername(username);
+        if (customerRepo.findByUsername(username) == null)
+        {
+            customerRepo.save(customer);
+        }
+    }
+
+    public void changePassword(String password, Customer customer) {
+        customer.setCustomer_password(passwordEncoder.encode(customer.getPassword()));
+    }
+
     public boolean addUser(Customer customer) {
         Customer customerFromDb = customerRepo.findByUsername(customer.getUsername());
 

@@ -106,4 +106,12 @@ public class Car {
     public void setPrice(Double price) {
         this.price = price;
     }
+
+    public Picture getPicture() {
+        return picture;
+    }
+
+    public void setPicture(Picture picture) {
+        this.picture = picture;
+    }
 }

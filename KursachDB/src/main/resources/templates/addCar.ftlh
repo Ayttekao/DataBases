@@ -54,7 +54,7 @@
                         <div class="cta-content">
                             <br>
                             <br>
-                            <h2><em>Add</em> cars panel</h2>
+                            <h2><em>Add</em> car panel</h2>
                             <p>Ut consectetur, metus sit amet aliquet placerat, enim est ultricies ligula</p>
                         </div>
                     </div>
